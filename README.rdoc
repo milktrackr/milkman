@@ -1,4 +1,7 @@
-== README
+== Project Milkman
+
+Have roommates who forget to buy milk? Milkman is a sensor/web app that lets you monitor the levels of milk in your fridge.
+
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
@@ -23,6 +26,8 @@ Things you may want to cover:
 
 * ...
 
+Mass Sensors Using Arduino:
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+http://forum.arduino.cc/index.php?topic=84133.0
+http://hackaday.com/2010/01/31/hacking-a-digital-bathroom-scale/
+http://www.open-electronics.org/wi-fi-body-scale-with-arduino/
