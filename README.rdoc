@@ -1,33 +1,11 @@
 == Project Milkman
 
-Have roommates who forget to buy milk? Milkman is a sensor/web app that lets you monitor the levels of milk in your fridge.
+An Arduino project that measures your apartment’s milk consumption over time (you know, for mom), allows you to check how much milk is left while on the go, and even texts you if you’re close running low.
 
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Have roommates who forget to buy milk?
+* Mom can check online and make sure you're drinking your milk!
 
 Mass Sensors Using Arduino:
-
-http://forum.arduino.cc/index.php?topic=84133.0
-http://hackaday.com/2010/01/31/hacking-a-digital-bathroom-scale/
-http://www.open-electronics.org/wi-fi-body-scale-with-arduino/
+* http://forum.arduino.cc/index.php?topic=84133.0
+* http://hackaday.com/2010/01/31/hacking-a-digital-bathroom-scale/
+* http://www.open-electronics.org/wi-fi-body-scale-with-arduino/
