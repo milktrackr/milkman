@@ -27,7 +27,6 @@ class MeasurementsController < ApplicationController
   # POST /measurements.json
   def create
     #Convert Arduino Output
-    binding.pry
     @measurement = Measurement.new(measurement_params)
 
     respond_to do |format|
