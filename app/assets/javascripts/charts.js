@@ -133,7 +133,7 @@ $(function () {
                 title: {
                     text: 'Milk (ml)'
                 },
-                max: 1000,
+                max: 2000,
                 min: 0
             },
             tooltip: {
@@ -148,33 +148,7 @@ $(function () {
                 // Define the data points. All series have a dummy year
                 // of 1970/71 in order to be compared on the same x axis. Note
                 // that in JavaScript, months start at 0 for January, 1 for February etc.
-                data: [
-                    [Date.UTC(1970,  9, 27), 1000 ],
-                    [Date.UTC(1970, 10, 10), 1000 ],
-                    [Date.UTC(1970, 10, 18), 908 ],
-                    [Date.UTC(1970, 11,  2), 908 ],
-                    [Date.UTC(1970, 11,  9), 908 ],
-                    [Date.UTC(1970, 11, 16), 750 ],
-                    [Date.UTC(1970, 11, 28), 750],
-                    [Date.UTC(1971,  0,  1), 750],
-                    [Date.UTC(1971,  0,  8), 750],
-                    [Date.UTC(1971,  0, 12), 750],
-                    [Date.UTC(1971,  0, 27), 750],
-                    [Date.UTC(1971,  1, 10), 487],
-                    [Date.UTC(1971,  1, 18), 487],
-                    [Date.UTC(1971,  1, 24), 209],
-                    [Date.UTC(1971,  2,  4), 209],
-                    [Date.UTC(1971,  2, 11), 209],
-                    [Date.UTC(1971,  2, 15), 209],
-                    [Date.UTC(1971,  2, 25), 209],
-                    [Date.UTC(1971,  3,  2), 50],
-                    [Date.UTC(1971,  3,  6), 50],
-                    [Date.UTC(1971,  3, 13), 1000 ],
-                    [Date.UTC(1971,  4,  3), 1000 ],
-                    [Date.UTC(1971,  4, 26), 880 ],
-                    [Date.UTC(1971,  5,  9), 880],
-                    [Date.UTC(1971,  5, 12), 880 ]
-                ]
+                data: gon.all_measurements
             }]
         });
 
