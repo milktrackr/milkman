@@ -1,4 +1,5 @@
 class Measurement < ActiveRecord::Base
+  belongs_to :container
   before_save :convert_raw_to_grams
 
 GRAMS_SLOPE_ROOM_TEMP = 2.395698737
@@ -27,8 +28,9 @@ GRAMS_INTERCEPT_ROOM_TEMP = -465.6012396
   end
 
   def percentage_left
-  # Might need a container to build this out
-
+    ((self.mass_value / self.container.original_mass) * 100.0).round
   end
+
+
 
 end
