@@ -1,4 +1,5 @@
 class Measurement < ActiveRecord::Base
+  before_save :convert_raw_to_grams
 
 GRAMS_SLOPE_ROOM_TEMP = 2.395698737
 GRAMS_INTERCEPT_ROOM_TEMP = -465.6012396
@@ -11,7 +12,8 @@ GRAMS_INTERCEPT_ROOM_TEMP = -465.6012396
     # kg ~0-6
     # Need to control for noise
 
-    [g_value, g_uom]
+    self.mass_value=(g_value)
+    self.mass_uom=(g_uom)
   end
 
   def convert_grams_to_liters
