@@ -20,6 +20,25 @@
 @import "bootstrap";
 @import "measurements";
 
+/* For the milk fill effect on the front page. */
+#milk-fill{
+  background-color:white;
+  position:relative;
+  top:-300px;
+  height:300px;
+  width:300px;
+  z-index: 0;
+}
+
+#milk-bottle{
+  z-index: 2;
+  position:relative;
+}
+
+#milk-bottle-container{
+  overflow: hidden;
+  height:391px;
+}
 
 /* Some Style from the Bootstrap Default Theme */
 body {
