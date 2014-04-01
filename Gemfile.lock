@@ -69,6 +69,7 @@ GEM
       railties (>= 3.0.0)
     ffi (1.9.3)
     google-analytics-rails (0.0.5)
+    googlecharts (1.6.8)
     hike (1.2.3)
     i18n (0.6.9)
     jbuilder (2.0.5)
@@ -195,6 +196,7 @@ DEPENDENCIES
   database_cleaner
   factory_girl_rails
   google-analytics-rails
+  googlecharts
   jbuilder (~> 2.0)
   jquery-rails
   pg
