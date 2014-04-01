@@ -13,10 +13,6 @@ class Measurement < ActiveRecord::Base
     self.mass_uom=(g_uom)
   end
 
-  def calculate_grams_from_raw(raw)
-    ((raw * GRAMS_SLOPE_ROOM_TEMP) + GRAMS_INTERCEPT_ROOM_TEMP).round
-  end
-
   def calculate_liters_from_grams
     # Milk density varies from 1.027kg/L to 1.033kg/L. 
     # We'll use 1.030kg/L for simplicity
@@ -52,6 +48,10 @@ class Measurement < ActiveRecord::Base
 
     # Is the recent measurement greater?
     calculate_grams_from_raw(params[:raw]) > last.mass_value
+  end
+
+  def calculate_grams_from_raw(raw)
+    ((raw * GRAMS_SLOPE_ROOM_TEMP) + GRAMS_INTERCEPT_ROOM_TEMP).round
   end
 
 end
