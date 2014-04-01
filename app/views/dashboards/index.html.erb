@@ -6,14 +6,7 @@
 
         <div class="row">
           <div class="col-lg-12">
-            <h1>Dashboard <small>Statistics Overview</small></h1>
-            <ol class="breadcrumb">
-              <li class="active"><i class="fa fa-dashboard"></i> Dashboard</li>
-            </ol>
-            <div class="alert alert-success alert-dismissable">
-              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-              Welcome to SB Admin by <a class="alert-link" href="http://startbootstrap.com">Start Bootstrap</a>! Feel free to use this template for your admin needs! We are using a few different plugins to handle the dynamic tables and charts, so make sure you check out the necessary documentation links provided.
-            </div>
+            <h1>Milk Dashboard <small>Statistics Overview</small></h1>
           </div>
         </div><!-- /.row -->
 
@@ -26,23 +19,11 @@
                     <i class="fa fa-comments fa-5x"></i>
                   </div>
                   <div class="col-xs-6 text-right">
-                    <p class="announcement-heading">456</p>
-                    <p class="announcement-text">New Mentions!</p>
+                    <p class="announcement-heading"><%= @measurements.count %></p>
+                    <p class="announcement-text">Readings</p>
                   </div>
                 </div>
               </div>
-              <a href="#">
-                <div class="panel-footer announcement-bottom">
-                  <div class="row">
-                    <div class="col-xs-6">
-                      View Mentions
-                    </div>
-                    <div class="col-xs-6 text-right">
-                      <i class="fa fa-arrow-circle-right"></i>
-                    </div>
-                  </div>
-                </div>
-              </a>
             </div>
           </div>
           <div class="col-lg-3">
@@ -54,22 +35,10 @@
                   </div>
                   <div class="col-xs-6 text-right">
                     <p class="announcement-heading">12</p>
-                    <p class="announcement-text">To-Do Items</p>
+                    <p class="announcement-text">Containers</p>
                   </div>
                 </div>
               </div>
-              <a href="#">
-                <div class="panel-footer announcement-bottom">
-                  <div class="row">
-                    <div class="col-xs-6">
-                      Complete Tasks
-                    </div>
-                    <div class="col-xs-6 text-right">
-                      <i class="fa fa-arrow-circle-right"></i>
-                    </div>
-                  </div>
-                </div>
-              </a>
             </div>
           </div>
           <div class="col-lg-3">
@@ -80,23 +49,11 @@
                     <i class="fa fa-tasks fa-5x"></i>
                   </div>
                   <div class="col-xs-6 text-right">
-                    <p class="announcement-heading">18</p>
-                    <p class="announcement-text">Crawl Errors</p>
+                    <p class="announcement-heading">5.3</p>
+                    <p class="announcement-text">Liters consumed</p>
                   </div>
                 </div>
               </div>
-              <a href="#">
-                <div class="panel-footer announcement-bottom">
-                  <div class="row">
-                    <div class="col-xs-6">
-                      Fix Issues
-                    </div>
-                    <div class="col-xs-6 text-right">
-                      <i class="fa fa-arrow-circle-right"></i>
-                    </div>
-                  </div>
-                </div>
-              </a>
             </div>
           </div>
           <div class="col-lg-3">
@@ -108,22 +65,10 @@
                   </div>
                   <div class="col-xs-6 text-right">
                     <p class="announcement-heading">56</p>
-                    <p class="announcement-text">New Orders!</p>
+                    <p class="announcement-text">Other Things!</p>
                   </div>
                 </div>
               </div>
-              <a href="#">
-                <div class="panel-footer announcement-bottom">
-                  <div class="row">
-                    <div class="col-xs-6">
-                      Complete Orders
-                    </div>
-                    <div class="col-xs-6 text-right">
-                      <i class="fa fa-arrow-circle-right"></i>
-                    </div>
-                  </div>
-                </div>
-              </a>
             </div>
           </div>
         </div><!-- /.row -->
@@ -135,7 +80,7 @@
                 <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> Traffic Statistics: October 1, 2013 - October 31, 2013</h3>
               </div>
               <div class="panel-body">
-                <div id="morris-chart-area"></div>
+                <div id="milk-line">Test</div>
               </div>
             </div>
           </div>

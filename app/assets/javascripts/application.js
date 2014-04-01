@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require_tree .
+//= require dashboards
 //= require highcharts
 //= require highcharts-more
 //= require charts
