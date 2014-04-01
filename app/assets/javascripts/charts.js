@@ -58,7 +58,7 @@ $(function () {
 	    // the value axis
 	    yAxis: {
 	        min: 0,
-	        max: 100,
+	        max: 2000,
 	        
 	        minorTickInterval: 'auto',
 	        minorTickWidth: 1,
@@ -80,22 +80,22 @@ $(function () {
 	        },
 	        plotBands: [{
 	            from: 0,
-	            to: 20,
+	            to: 400,
 	            color: '#DF5353' // red
 	        }, {
-	            from: 20,
-	            to: 60,
+	            from: 400,
+	            to: 1200,
 	            color: '#DDDF0D' // yellow
 	        }, {
-	            from: 60,
-	            to: 100,
+	            from: 1200,
+	            to: 2000,
 	            color: '#55BF3B' // green
 	        }]        
 	    },
 	
 	    series: [{
-	        name: 'Speed',
-	        data: [60],
+	        name: 'Milk Amount',
+	        data: [gon.current_measurement],
 	        tooltip: {
 	            valueSuffix: ' ml'
 	        }
