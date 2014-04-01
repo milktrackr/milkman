@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140331220719) do
+ActiveRecord::Schema.define(version: 20140401180644) do
+
+  create_table "containers", force: true do |t|
+    t.float    "original_mass"
+    t.string   "mass_uom"
+    t.datetime "creation_time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "measurements", force: true do |t|
     t.integer  "raw"
@@ -20,6 +28,7 @@ ActiveRecord::Schema.define(version: 20140331220719) do
     t.string   "mass_uom"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "container_id"
   end
 
 end
