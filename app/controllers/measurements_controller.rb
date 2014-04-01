@@ -7,6 +7,7 @@ class MeasurementsController < ApplicationController
   # GET /measurements.json
   def index
     @measurements = Measurement.all
+    # gon.current_measurment = @measurements.last.mass_value
   end
 
   # GET /measurements/1

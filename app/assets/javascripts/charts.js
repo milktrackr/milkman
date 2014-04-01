@@ -95,30 +95,12 @@ $(function () {
 	
 	    series: [{
 	        name: 'Speed',
-	        data: [80],
+	        data: [60],
 	        tooltip: {
 	            valueSuffix: ' ml'
 	        }
 	    }]
 	
-	}, 
-	// Add some life
-	function (chart) {
-		if (!chart.renderer.forExport) {
-		    setInterval(function () {
-		        var point = chart.series[0].points[0],
-		            newVal,
-		            inc = Math.round((Math.random() - 0.5) * 20);
-		        
-		        newVal = point.y + inc;
-		        if (newVal < 0 || newVal > 100) {
-		            newVal = point.y - inc;
-		        }
-		        
-		        point.update(newVal);
-		        
-		    }, 3000);
-		}
 	});
 
 
@@ -157,7 +139,7 @@ $(function () {
             tooltip: {
                 formatter: function() {
                         return '<b>'+ this.series.name +'</b><br/>'+
-                        Highcharts.dateFormat('%e. %b', this.x) +': '+ this.y +' m';
+                        Highcharts.dateFormat('%e. %b', this.x) +': '+ this.y +' ml';
                 }
             },
             
