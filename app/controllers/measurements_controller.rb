@@ -27,6 +27,7 @@ class MeasurementsController < ApplicationController
   # POST /measurements.json
   def create
     #Convert Arduino Output
+    binding.pry
     @measurement = Measurement.new(measurement_params)
 
     respond_to do |format|
@@ -72,6 +73,7 @@ class MeasurementsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def measurement_params
-      params[:measurement]
+      params.require(:measurement).permit(:raw, :read_time)
+      # params[:measurement]
     end
 end
