@@ -31,8 +31,8 @@ class MeasurementsController < ApplicationController
   # POST /measurements
   # POST /measurements.json
   def create
-    #Convert Arduino Output
-    @measurement = Measurement.new(measurement_params)
+    #Log Arduino Output
+    @measurement = Measurement.log_new_measurement(measurement_params)
 
     respond_to do |format|
       if @measurement.save
