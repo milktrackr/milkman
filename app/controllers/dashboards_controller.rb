@@ -2,6 +2,7 @@ class DashboardsController < ApplicationController
 
 	def index
 		@measurements = Measurement.all
+		@containers = Container.all
 		gon.current_measurement = @measurements.last.mass_value
     gon.all_measurements = []
     @measurements.all.each do |measurement|
