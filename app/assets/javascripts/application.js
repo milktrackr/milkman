@@ -17,3 +17,4 @@
 //= require highcharts
 //= require highcharts-more
 //= require charts
+//= require milkbottle
