@@ -1,12 +1,16 @@
-console.log("This is a test")
+$(".dashboards.index").ready(function(){
+    Highcharts.setOptions({
+        global: {
+            timezoneOffset: 5 * 60
+        }
+    });
 
-$(document).ready(function(){
 
-$('#milk-line').highcharts({
+	$('#milk-line').highcharts({
             chart: {
             	backgroundColor: "#f2f2f2",
-	        		borderColor: null,
-              type: 'spline',
+	        	borderColor: null,
+                type: 'spline',
             },
             title: {
                 text: null
@@ -14,17 +18,17 @@ $('#milk-line').highcharts({
             legend: {
             	enabled: false
             },
-            credits: 
+            credits: {
       				enabled: false
   					},
             xAxis: {
                 type: 'datetime',
-                dateTimeLabelFormats: { // don't display the dummy year
-                    month: '%e. %b',
-                    year: '%b',
-                    minute: '%H:%M',
-                    hour: '%H:%M'
-                }
+                // dateTimeLabelFormats: { // don't display the dummy year
+                //     month: '%e. %b',
+                //     year: '%b',
+                //     minute: '%H:%M',
+                //     hour: '%H:%M'
+                // }
             },
             yAxis: {
                 title: {
@@ -36,7 +40,7 @@ $('#milk-line').highcharts({
             tooltip: {
                 formatter: function() {
                         return '<b>'+ this.series.name +'</b><br/>'+
-                        Highcharts.dateFormat('%e. %b', this.x) +': '+ this.y +' ml';
+                        Highcharts.dateFormat('%H:%M', this.x) +': '+ this.y +' ml';
                 }
             },
             
@@ -48,6 +52,7 @@ $('#milk-line').highcharts({
                 data: gon.all_measurements
             }]
         });
+	
 });
 
 

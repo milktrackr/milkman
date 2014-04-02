@@ -1,7 +1,8 @@
-$(function () {
-	
-    $('#highchart-gauge').highcharts({
-	
+$(".measurements.index").ready(function(){
+	console.log("charts");
+
+
+	$('#highchart-gauge').highcharts({	
 	    chart: {
 	        type: 'gauge',
 	        plotBackgroundColor: null,
@@ -103,9 +104,7 @@ $(function () {
 	
 	});
 
-
-
-		$('#highchart-line').highcharts({
+$('#highchart-line').highcharts({
             chart: {
             	backgroundColor: "#f2f2f2",
 	        		borderColor: null,
@@ -152,6 +151,5 @@ $(function () {
             }]
         });
 
-
-
+		
 });
