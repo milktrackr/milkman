@@ -1,5 +1,11 @@
 $(".dashboards.index").ready(function(){
-	console.log("hi");
+    Highcharts.setOptions({
+        global: {
+            timezoneOffset: 5 * 60
+        }
+    });
+
+
 	$('#milk-line').highcharts({
             chart: {
             	backgroundColor: "#f2f2f2",
