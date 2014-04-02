@@ -14,14 +14,16 @@ $('#milk-line').highcharts({
             legend: {
             	enabled: false
             },
-            credits: {
+            credits: 
       				enabled: false
   					},
             xAxis: {
                 type: 'datetime',
                 dateTimeLabelFormats: { // don't display the dummy year
                     month: '%e. %b',
-                    year: '%b'
+                    year: '%b',
+                    minute: '%H:%M',
+                    hour: '%H:%M'
                 }
             },
             yAxis: {
