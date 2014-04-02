@@ -1,8 +1,6 @@
-console.log("This is a test")
-
-$(document).ready(function(){
-
-$('#milk-line').highcharts({
+$(".dashboards.index").ready(function(){
+	console.log("hi");
+	$('#milk-line').highcharts({
             chart: {
             	backgroundColor: "#f2f2f2",
 	        		borderColor: null,
@@ -14,7 +12,7 @@ $('#milk-line').highcharts({
             legend: {
             	enabled: false
             },
-            credits: 
+            credits: {
       				enabled: false
   					},
             xAxis: {
@@ -48,6 +46,7 @@ $('#milk-line').highcharts({
                 data: gon.all_measurements
             }]
         });
+	
 });
 
 
