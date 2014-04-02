@@ -4,8 +4,8 @@ looping = true
 
 class MilkServer
   include HTTParty
-  # base_uri 'http://milk-man.herokuapp.com/'
-  base_uri 'http://127.0.0.1:3000'
+  base_uri 'http://milk-man.herokuapp.com/'
+  # base_uri 'http://127.0.0.1:3000'
 end
 
 
