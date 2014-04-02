@@ -13,8 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require dashboards
 //= require highcharts
 //= require highcharts-more
+//= require jquery-readyselector
 //= require charts
+//= require dashboards
 //= require milkbottle
