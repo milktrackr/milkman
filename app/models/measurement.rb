@@ -27,7 +27,7 @@ class Measurement < ActiveRecord::Base
     # Assume that we don't want to do any "smoothing" -> 154g->155g, just write 155g
     m = Measurement.new(params)
     if m.is_new_container?
-      Container.create( original_mass:  calculate_grams_from_raw(params[:raw].to_f),
+      Container.create( original_mass:  m.send(:calculate_grams_from_raw, params[:raw].to_f),
                         mass_uom:       'g',
                         creation_time:  params[:read_time])
     end
