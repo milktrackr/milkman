@@ -3,8 +3,8 @@ $(".dashboards.index").ready(function(){
 	$('#milk-line').highcharts({
             chart: {
             	backgroundColor: "#f2f2f2",
-	        		borderColor: null,
-              type: 'spline',
+	        	borderColor: null,
+                type: 'spline',
             },
             title: {
                 text: null
@@ -17,12 +17,12 @@ $(".dashboards.index").ready(function(){
   					},
             xAxis: {
                 type: 'datetime',
-                dateTimeLabelFormats: { // don't display the dummy year
-                    month: '%e. %b',
-                    year: '%b',
-                    minute: '%H:%M',
-                    hour: '%H:%M'
-                }
+                // dateTimeLabelFormats: { // don't display the dummy year
+                //     month: '%e. %b',
+                //     year: '%b',
+                //     minute: '%H:%M',
+                //     hour: '%H:%M'
+                // }
             },
             yAxis: {
                 title: {
@@ -34,7 +34,7 @@ $(".dashboards.index").ready(function(){
             tooltip: {
                 formatter: function() {
                         return '<b>'+ this.series.name +'</b><br/>'+
-                        Highcharts.dateFormat('%e. %b', this.x) +': '+ this.y +' ml';
+                        Highcharts.dateFormat('%H:%M', this.x) +': '+ this.y +' ml';
                 }
             },
             
