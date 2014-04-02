@@ -7,7 +7,7 @@ function milkBottle(percent){
 
   $('#milk-fill').animate({
     top: "-="+offset
-  },1000,function(){});
+  },700,function(){});
 }
 
 $(document).ready(function(){
