@@ -1,7 +1,7 @@
 $(".dashboards.index").ready(function(){
     Highcharts.setOptions({
         global: {
-            timezoneOffset: 5 * 60
+            timezoneOffset: 4 * 60
         }
     });
 
@@ -23,12 +23,12 @@ $(".dashboards.index").ready(function(){
   					},
             xAxis: {
                 type: 'datetime',
-                // dateTimeLabelFormats: { // don't display the dummy year
-                //     month: '%e. %b',
-                //     year: '%b',
-                //     minute: '%H:%M',
-                //     hour: '%H:%M'
-                // }
+                dateTimeLabelFormats: { // don't display the dummy year
+                    month: '%e. %b',
+                    year: '%b',
+                    minute: '%I:%M %p',
+                    hour: '%I:%M %p'
+                }
             },
             yAxis: {
                 title: {
@@ -40,7 +40,7 @@ $(".dashboards.index").ready(function(){
             tooltip: {
                 formatter: function() {
                         return '<b>'+ this.series.name +'</b><br/>'+
-                        Highcharts.dateFormat('%H:%M', this.x) +': '+ this.y +' ml';
+                        Highcharts.dateFormat('%b. %e, %I:%M %p', this.x) +': '+ this.y +' ml';
                 }
             },
             
