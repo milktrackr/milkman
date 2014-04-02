@@ -160,14 +160,14 @@
                       </tr>
                     </thead>
                     <tbody>
+                      <% @measurements.last(10).each do |measurement| %>
                       <tr>
-                        <% @measurements.each do |measurement| %>
-                        <td>measurement.id</td>
-                        <td>10/21/2013</td>
-                        <td>3:29 PM</td>
-                        <td>$321.33</td>
-                        <% end %>
+                        <td><%= measurement.id %></td>
+                        <td><%= measurement.read_time.strftime("%m/%d/%Y") %></td>
+                        <td><%= measurement.read_time.strftime("%I:%M %p") %></td>
+                        <td><%= measurement.mass_value %><%= measurement.mass_uom %></td>
                       </tr>
+                      <% end %>
                       
                     </tbody>
                   </table>
