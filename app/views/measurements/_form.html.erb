@@ -10,6 +10,15 @@
       </ul>
     </div>
   <% end %>
+  <p>
+    <%= f.label :raw %><br>
+    <%= f.text_field :raw %>
+  </p>
+  <p>
+    <%= f.label :read_time %><br>
+    <%= f.datetime_select :read_time, ampm: true, minute_step: 15 %>
+  </p>
+
 
   <div class="actions">
     <%= f.submit %>

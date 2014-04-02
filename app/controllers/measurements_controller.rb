@@ -1,17 +1,10 @@
 class MeasurementsController < ApplicationController
   before_action :set_measurement, only: [:show, :edit, :update, :destroy]
-  protect_from_forgery except: :create
-
 
   # GET /measurements
   # GET /measurements.json
   def index
     @measurements = Measurement.all
-    gon.current_measurement = @measurements.last.mass_value
-    gon.all_measurements = []
-    @measurements.all.each do |measurement|
-      gon.all_measurements<< [measurement.read_time, measurement.mass_value]
-    end
   end
 
   # GET /measurements/1
@@ -31,8 +24,9 @@ class MeasurementsController < ApplicationController
   # POST /measurements
   # POST /measurements.json
   def create
-    #Log Arduino Output
-    @measurement = Measurement.log_new_measurement(measurement_params)
+    #Convert Arduino Output
+    @measurement = Measurement.new(measurement_params)
+    # @measurement = Measurement.log_new_measurement(measurement_params)
 
     respond_to do |format|
       if @measurement.save
@@ -77,7 +71,6 @@ class MeasurementsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def measurement_params
-      params.require(:measurement).permit(:raw, :read_time)
-      # params[:measurement]
+      params[:measurement]
     end
 end
