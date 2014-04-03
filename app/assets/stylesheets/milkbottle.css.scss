@@ -22,6 +22,7 @@
  .highcharts-container{
   margin:0 auto;
 } 
+
 }
 
 //767 breakpoint ?
@@ -32,5 +33,19 @@
   width: 382px;
   float:none;
 }    
+
+.row-centered .btn{
+  margin:15px auto;
+  display:block;
+  width:50%;
+}
+
+#headerwrap{
+  padding-top:0;
+}
+
+#headerwrap br{
+  display: none;
+}
 
 }
