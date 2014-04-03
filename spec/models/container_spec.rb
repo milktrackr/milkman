@@ -16,4 +16,16 @@ describe Container do
     Measurement.log_new_measurement({raw: 800, read_time: Time.now - 80.minutes}).save
     expect(Container.last.percentage_left).to eq(100)
   end
+
+  it "calculates total milk consumed in liters" do
+    Measurement.log_new_measurement({raw: 800, read_time: Time.now - 80.minutes}).save
+    Measurement.log_new_measurement({raw: 200, read_time: Time.now - 70.minutes}).save
+    Measurement.log_new_measurement({raw: 1000, read_time: Time.now - 60.minutes}).save
+    Measurement.log_new_measurement({raw: 200, read_time: Time.now - 50.minutes}).save
+    Measurement.log_new_measurement({raw: 900, read_time: Time.now - 40.minutes}).save
+    Measurement.log_new_measurement({raw: 700, read_time: Time.now - 30.minutes}).save
+    expect(Container.total_milk_consumed).to eq(3.861)
+
+  end
+
 end
