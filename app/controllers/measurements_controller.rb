@@ -35,7 +35,7 @@ class MeasurementsController < ApplicationController
     #Convert Arduino Output
     @measurement = Measurement.log_new_measurement(measurement_params)
     if @measurement.container.percentage_left < 10 && !Container.last_text_message.today?
-      send_text
+      send_text(@measurement.mass_value)
     end
 
     respond_to do |format|
@@ -84,7 +84,7 @@ class MeasurementsController < ApplicationController
       params.require(:measurement).permit(:raw, :read_time)
     end
 
-    def send_text
+    def send_text(mass)
       account_sid = ENV["TWILIO_ACCNT_SID"]
       auth_token = ENV["TWILIO_AUTH_TOKEN"]
 
@@ -93,7 +93,7 @@ class MeasurementsController < ApplicationController
       @client.account.messages.create(
         :from => '+13472271984',
         :to => ENV["TWILIO_TO_NUM"],
-        :body => "Holy cow you're almost out of milk!"
+        :body => "Holy cow you're almost out of milk! You have #{mass} ml of milk left!"
       )
       Container.last_text_message = Time.now
     end
