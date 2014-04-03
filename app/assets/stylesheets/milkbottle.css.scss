@@ -18,6 +18,12 @@
   height:391px;
 }
 
+@media only screen and (max-width:1200px){
+ .highcharts-container{
+  margin:0 auto;
+} 
+}
+
 //767 breakpoint ?
 @media only screen and (max-width: 767px) {
 #milk-bottle-container{
@@ -26,9 +32,5 @@
   width: 382px;
   float:none;
 }    
-
-.highcharts-container{
-  margin:0 auto;
-}
 
 }
