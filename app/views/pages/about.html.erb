@@ -1,81 +1,73 @@
-<h1>About MilkTrackr</h1>
-
-<h2>Milkman Hardware</h2>
-<p>
-An Arduino project that measures your apartment’s milk consumption over time (you know, for mom!) and allows you to check how much milk is left while on the go (through a Rails app). Some stretch goals would be to show when new jugs/cartons are added and possibly text you when you're running low.</p>
-Hardware
-To effectively measure milk consumption over time, we began by assessing two different sensors that could be used with an Arduino.
--Liquid Capacitive Sensor
--Mass sensor found in a common scale
-Our early tests showed that the precision of the liquid capacitive sensor did not meet our requirements, so we pursued the mass sensor option instead. Rather than buying a hobbyist’s mass sensor, we found a couple guides online that utilized the sensor available in a common scale.
-We ended up using this scale but stripped it of all electronics except for the mass sensor we needed. Our first iteration consisted of using the Arduino to measure the voltage across a potentiometer. A potentiometer is a electrical component that has a variable resistance based on knob or dial. On old analog systems all knobs are potentiometers. So our first circuit looked like
-
-
-http://sciencestuff.xperiment.mobi/2012/04/19/measuring-weight-via-usb-with-electronic-kitchen-scales-and-the-arduino/
-http://www.ebay.com/sch/i.html?_trksid=p2050601.m570.l1313.TR0.TRC0.H0.XINA128P&_nkw=INA128P&_sacat=0&_from=R40
-
-https://www.sparkfun.com/products/9376
-http://gadgetmakersblog.com/hacking-kitchen-scale/
-
-
-
-
-Room Temperature
-
-
-
-
-
-
-Raw
-Actual Mass (g)
-Approximate Mass (g)
-SLOPE
-194
-0
--0.8356847406
-2.395698737
-209
-35
-35.09979631
-INTERCEPT
-247
-125
-126.1363483
--465.6012396
-279
-203
-202.7987079
-
-
-418
-536
-535.8008323
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Basic Circuit
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 text-center">
+      <h1>How it all works</h1>
+      <h2 class="subTitle">An Overview of the Magic that powers MilkTrackr</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <h2 class="subTitle">The Problem</h2>
+      <p>An Arduino project that measures your apartment’s milk consumption over time (you know, for mom!) and allows you to check how much milk is left while on the go through a Rails app. It also shows you when new cartons/jugs are added and even messages you when you're running low!</p>
+    </div>
+    <div class="col-sm-4">
+      <img src="#" alt="Got Milk?">
+    </div>
+    <div class="col-sm-4">
+      <h2 class="subTitle">The Solution</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="container white">
+      <div class="row">
+        <div class="col-xs-12">
+          <h1>The Hardware</h1>
+          <div class="row">
+            <div class="col-sm-8">
+              <h2>An Overview</h2>
+              <p>To effectively measure milk consumption over time, we needed to determine an analog sensor that could plug into the Arduino. We briefly considered a capacitive liquid sensor but settled on a mass sensor for simplicity and accuracy. By following a couple guides online, we ended up using the sensor in this scale after stripping out all other electronics.</p>
+              <p>The first iteration of the circuit consisted of using the Arduino to measure the voltage across the mass sensor, which acts as a potentiometer with a resistance that varies linearly with the force applied to the top. The Arduino samples the voltage within a range of 0-5 volts and converts it to a digital signal with values from 0-1024. For this project, we called this Arduino unit of measurement a “raw”.</p>
+            </div>
+            <div class="col-sm-4">
+              <h2>Circuit Diagram</h2>
+              <div>
+                <img src="assets/milkman_basic_circuit.png" alt="Got Milk?">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <h2>Proof of Concept</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-4">
+              <div>
+                <img src="assets/first_iteration_pic.jpg" class="img-responsive img-rounded"alt="So many wires!">
+              </div>
+            </div>
+            <div class="col-sm-8">
+              <p>However, to get the hardware working correctly, we needed to add an amplifier to properly scale the analog signal to a range that the Arduino could measure precisely. Without the amplifier, placing anything from 0-6 kg on the mass sensor would result in the same raw value being measured by the Arduino. In addition to the amplifier, we added an Adafruit CC3000 WiFi Shield so the Arduino can communication with our server over WiFi.</p>
+              <h2>Programming the Arduino in C</h2>
+              <div class="well">
+                void loop(void)<br>
+                  &nbsp&nbsp{<br>
+                  &nbsp&nbsp&nbsp&nbspunsigned long time = millis();<br>
+                  &nbsp&nbsp&nbsp&nbspif (time - lastSend >= (1000 * (unsigned long)LOGGING_FREQ_SECONDS)) {<br>
+                  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsplogSensorReading();<br>
+                  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsplastSend = time;<br>
+                  &nbsp&nbsp}<br>
+                  }</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <h2>Final Version</h2>
+          <p>Once we had the proof of concept up and running, we secured the Arduino and breadboard in a cardboard case and ran wire through the lid where we mounted the mass sensor platform. The result is a secure prototype that can comfortably fit in any refrigerator for all your milk tracking needs!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
