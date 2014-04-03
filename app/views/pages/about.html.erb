@@ -1,0 +1,81 @@
+<h1>About MilkTrackr</h1>
+
+<h2>Milkman Hardware</h2>
+<p>
+An Arduino project that measures your apartment’s milk consumption over time (you know, for mom!) and allows you to check how much milk is left while on the go (through a Rails app). Some stretch goals would be to show when new jugs/cartons are added and possibly text you when you're running low.</p>
+Hardware
+To effectively measure milk consumption over time, we began by assessing two different sensors that could be used with an Arduino.
+-Liquid Capacitive Sensor
+-Mass sensor found in a common scale
+Our early tests showed that the precision of the liquid capacitive sensor did not meet our requirements, so we pursued the mass sensor option instead. Rather than buying a hobbyist’s mass sensor, we found a couple guides online that utilized the sensor available in a common scale.
+We ended up using this scale but stripped it of all electronics except for the mass sensor we needed. Our first iteration consisted of using the Arduino to measure the voltage across a potentiometer. A potentiometer is a electrical component that has a variable resistance based on knob or dial. On old analog systems all knobs are potentiometers. So our first circuit looked like
+
+
+http://sciencestuff.xperiment.mobi/2012/04/19/measuring-weight-via-usb-with-electronic-kitchen-scales-and-the-arduino/
+http://www.ebay.com/sch/i.html?_trksid=p2050601.m570.l1313.TR0.TRC0.H0.XINA128P&_nkw=INA128P&_sacat=0&_from=R40
+
+https://www.sparkfun.com/products/9376
+http://gadgetmakersblog.com/hacking-kitchen-scale/
+
+
+
+
+Room Temperature
+
+
+
+
+
+
+Raw
+Actual Mass (g)
+Approximate Mass (g)
+SLOPE
+194
+0
+-0.8356847406
+2.395698737
+209
+35
+35.09979631
+INTERCEPT
+247
+125
+126.1363483
+-465.6012396
+279
+203
+202.7987079
+
+
+418
+536
+535.8008323
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Basic Circuit
