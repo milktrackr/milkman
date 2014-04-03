@@ -9,8 +9,9 @@ $(".dashboards.index").ready(function(){
 	$('#milk-line').highcharts({
             chart: {
             	backgroundColor: "#f2f2f2",
-	        	borderColor: null,
-                type: 'spline',
+	        	  borderColor: null,
+              type: 'spline',
+              zoomType: 'x'
             },
             title: {
                 text: null
