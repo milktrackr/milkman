@@ -126,7 +126,7 @@ $(".dashboards.index").ready(function(){
                 rotation: 'auto'
             },
             title: {
-                text: null
+                text: 'ml'
             },
             plotBands: [{
                 from: 0,
@@ -147,7 +147,7 @@ $(".dashboards.index").ready(function(){
             name: 'Milk Amount',
             data: [gon.current_measurement],
             tooltip: {
-                valueSuffix: ' ml'
+                valueSuffix: 'ml'
             }
         }]
     

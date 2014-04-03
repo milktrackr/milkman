@@ -77,7 +77,7 @@ $(".measurements.index").ready(function(){
 	            rotation: 'auto'
 	        },
 	        title: {
-	            text: null
+	            text: "ml"
 	        },
 	        plotBands: [{
 	            from: 0,
