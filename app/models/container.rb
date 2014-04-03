@@ -1,5 +1,10 @@
 class Container < ActiveRecord::Base
   has_many :measurements
+  class << self
+    attr_accessor :last_text_message
+  end
+  
+  self.last_text_message = Time.now - 1.day
 
   def percentage_left
     ((self.measurements.last.mass_value / self.original_mass) * 100.0).round

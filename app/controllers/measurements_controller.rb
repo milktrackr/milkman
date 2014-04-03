@@ -12,6 +12,7 @@ class MeasurementsController < ApplicationController
     @measurements.all.each do |measurement|
     gon.all_measurements << [measurement.read_time.utc.to_i*1000, measurement.mass_value]
     end
+
   end
 
   # GET /measurements/1
@@ -33,6 +34,9 @@ class MeasurementsController < ApplicationController
   def create
     #Convert Arduino Output
     @measurement = Measurement.log_new_measurement(measurement_params)
+    if @measurement.container.percentage_left < 10 && !Container.last_text_message.today?
+      send_text
+    end
 
     respond_to do |format|
       if @measurement.save
@@ -78,5 +82,19 @@ class MeasurementsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def measurement_params
       params.require(:measurement).permit(:raw, :read_time)
+    end
+
+    def send_text
+      account_sid = ENV["TWILIO_ACCNT_SID"]
+      auth_token = ENV["TWILIO_AUTH_TOKEN"]
+
+      @client = Twilio::REST::Client.new account_sid, auth_token
+
+      @client.account.messages.create(
+        :from => '+13472271984',
+        :to => ENV["TWILIO_TO_NUM"],
+        :body => "Holy cow you're almost out of milk!"
+      )
+      Container.last_text_message = Time.now
     end
 end
