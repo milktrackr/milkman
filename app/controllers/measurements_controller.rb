@@ -34,12 +34,12 @@ class MeasurementsController < ApplicationController
   def create
     #Convert Arduino Output
     @measurement = Measurement.log_new_measurement(measurement_params)
-    if @measurement.container.percentage_left < 10 && !Container.last_text_message.today?
-      send_text(@measurement.mass_value)
-    end
 
     respond_to do |format|
       if @measurement.save
+        if @measurement.container.percentage_left < 10 && !Container.last_text_message.today?
+          send_text(@measurement.mass_value)
+        end
         format.html { redirect_to @measurement, notice: 'Measurement was successfully created.' }
         format.json { render action: 'show', status: :created, location: @measurement }
       else
