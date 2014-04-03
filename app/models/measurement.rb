@@ -52,7 +52,8 @@ class Measurement < ActiveRecord::Base
 
   private
   def calculate_grams_from_raw(raw)
-    ((raw * GRAMS_SLOPE_ROOM_TEMP) + GRAMS_INTERCEPT_ROOM_TEMP).round
+    grams = ((raw * GRAMS_SLOPE_ROOM_TEMP) + GRAMS_INTERCEPT_ROOM_TEMP).round
+    return grams < 0 ? 0 : grams
   end
 
 end
