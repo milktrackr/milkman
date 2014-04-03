@@ -125,7 +125,9 @@ $('#highchart-line').highcharts({
                 type: 'datetime',
                 dateTimeLabelFormats: { // don't display the dummy year
                     month: '%e. %b',
-                    year: '%b'
+                    year: '%b',
+                    minute: '%I:%M %p',
+                    hour: '%I:%M %p'
                 }
             },
             yAxis: {
@@ -138,7 +140,7 @@ $('#highchart-line').highcharts({
             tooltip: {
                 formatter: function() {
                         return '<b>'+ this.series.name +'</b><br/>'+
-                        Highcharts.dateFormat('%e. %b', this.x) +': '+ this.y +' ml';
+                        Highcharts.dateFormat('%b. %e, %I:%M %p', this.x) +': '+ this.y +' ml';
                 }
             },
             

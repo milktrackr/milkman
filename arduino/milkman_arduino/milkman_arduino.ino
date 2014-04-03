@@ -36,7 +36,7 @@
 #define WLAN_SECURITY          WLAN_SEC_WPA2
 
 // Data logging configuration.
-#define LOGGING_FREQ_SECONDS   30       // Seconds to wait before a new sensor reading is logged.
+#define LOGGING_FREQ_SECONDS   60       // Seconds to wait before a new sensor reading is logged.
 
 #define SENSOR_PIN             0        // Analog pin to read sensor values from (for example
                                         // from a photocell or other resistive sensor).

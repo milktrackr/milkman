@@ -31,7 +31,7 @@ class Measurement < ActiveRecord::Base
                         mass_uom:       'g',
                         creation_time:  params[:read_time])
     end
-    m.container_id = Container.last.id
+    m.container = Container.last
     m
   end
 
