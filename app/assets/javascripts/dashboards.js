@@ -54,6 +54,28 @@ $(".dashboards.index").ready(function(){
             }]
         });
 
+
+$('#max-button').click(function() {
+        var chart = $('#milk-line').highcharts();
+        chart.xAxis[0].setExtremes(gon.first_measurement_time);
+    });
+
+
+$('#week-button').click(function() {
+        var chart = $('#milk-line').highcharts();
+        chart.xAxis[0].setExtremes(Date.now() - 604800000);
+    });
+
+$('#day-button').click(function() {
+        var chart = $('#milk-line').highcharts();
+        chart.xAxis[0].setExtremes((Date.now() - 86400000));
+    });
+
+$('#hour-button').click(function() {
+        var chart = $('#milk-line').highcharts();
+        chart.xAxis[0].setExtremes((Date.now() - 3600000));
+    });
+
     $('#milk-gauge').highcharts({  
         chart: {
             type: 'gauge',
