@@ -179,3 +179,12 @@ table.tablesorter thead tr th:hover {
   display:inline-block;
   width: 33%;
 }
+
+@media all and (max-width: 1050px) { /* screen size until 1200px */
+    .green-heading {
+      font-size: 20px;
+    }
+    .green-text{
+      font-size: 0.8em;
+    }
+}
