@@ -7,7 +7,7 @@ class Measurement < ActiveRecord::Base
 
   def convert_raw_to_grams
     g_uom = 'g'
-    g_value = m.calculate_grams_from_raw(self.raw)
+    g_value = calculate_grams_from_raw(self.raw)
 
     self.mass_value=(g_value)
     self.mass_uom=(g_uom)
