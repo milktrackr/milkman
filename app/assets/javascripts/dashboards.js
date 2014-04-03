@@ -19,7 +19,7 @@ $(".dashboards.index").ready(function(){
             	enabled: false
             },
             credits: {
-      				enabled: false
+      			   enabled: false
   					},
             xAxis: {
                 type: 'datetime',
