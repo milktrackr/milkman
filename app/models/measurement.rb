@@ -7,7 +7,7 @@ class Measurement < ActiveRecord::Base
 
   def convert_raw_to_grams
     g_uom = 'g'
-    g_value = calculate_grams_from_raw(self.raw)
+    g_value = Measurement.calculate_grams_from_raw(self.raw)
 
     self.mass_value=(g_value)
     self.mass_uom=(g_uom)
@@ -27,7 +27,7 @@ class Measurement < ActiveRecord::Base
     # Assume that we don't want to do any "smoothing" -> 154g->155g, just write 155g
     m = Measurement.new(params)
     if m.is_new_container?
-      Container.create( original_mass:  m.send(:calculate_grams_from_raw, params[:raw].to_f),
+      Container.create( original_mass:  Measurement.calculate_grams_from_raw(params[:raw]),
                         mass_uom:       'g',
                         creation_time:  params[:read_time])
     end
@@ -38,20 +38,27 @@ class Measurement < ActiveRecord::Base
   def is_new_container?
     # How to determine if there's a new container?
     # Can be adjusted once we have more data
-    # -----
-    # It's a new container *IF* current measurement is greater than
-    # the last measurement that was greater than measurement_gram_minimum
+    
+    # It is a new container if this is the first measurement taken
+    return true if Measurement.all.count == 0
+
+    # It's a new container *IF* current measurement is significantly greater
+    # than the last measurement that was greater than measurement_gram_minimum
 
     # Get the last measurement above the minimum threshold
     min_threshold = 10.0 # grams
     last_record = Measurement.where("mass_value > ?",min_threshold).order(read_time: :desc).limit(1)
 
-    # Is the recent measurement greater?
-    last_record.empty? ? true : calculate_grams_from_raw(self.raw) > last_record[0].mass_value
+    if last_record.empty?
+      return true
+    else
+    # Adjust for the current reading being noisily above the last reading
+     noise_tolerance = 5.0 # grams 
+     Measurement.calculate_grams_from_raw(self.raw) > last_record[0].mass_value + noise_tolerance  
+    end
   end
 
-  private
-  def calculate_grams_from_raw(raw)
+  def self.calculate_grams_from_raw(raw)
     grams = ((raw * GRAMS_SLOPE_ROOM_TEMP) + GRAMS_INTERCEPT_ROOM_TEMP).round
     return grams < 0 ? 0 : grams
   end
