@@ -14,13 +14,18 @@
 	 <!-- Fixed navbar -->
     <div class="navbar navbar-default navbar-fixed-top">
       <div class="container">
-        <div class="navbar-header">
-          <a class= button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="<%= root_path %>"><b>MilkTrackr</b></a>
+        <a class="navbar-brand" href="<%= root_path %>"><b>MilkTrackr</b></a>
+        <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+          <span class = "icon-bar white"></span>
+          <span class = "icon-bar white"></span>
+          <span class = "icon-bar white"></span>
+        </button>
+        <div class = "collapse navbar-collapse navHeaderCollapse">
+          <ul class = "nav navbar-nav navbar-right">
+            <li><a href="<%= root_path %>">Home</a></li>
+            <li><a href="<%= dashboard_path %>">Dashboard</a></li>
+            <li><a href="#">About</a></li>
+          </ul>
         </div>
       </div>
     </div>
