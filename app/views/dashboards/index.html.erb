@@ -104,10 +104,12 @@
               </div>
               <div class="panel-body">
                 <div class="list-group">
+                  <% Container.order(creation_time: :desc).limit(10).each do |container|%>
                   <a href="#" class="list-group-item">
-                    <span class="badge">4 minutes ago</span>
-                    <i class="fa fa-comment"></i> Commented on a post
+                    <span class="badge"><%= time_ago_in_words(container.creation_time) %> ago</span>
+                    <i class="fa fa-comment"></i> New container added. Approx weight: <%= container.original_mass %><%= container.mass_uom %>
                   </a>
+                  <% end %>
                 </div>
                 <div class="text-right">
                   <a href="#">View All Activity <i class="fa fa-arrow-circle-right"></i></a>
