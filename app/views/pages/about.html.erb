@@ -82,26 +82,29 @@
       <div class="col-sm-6">
         <h2>Code to detec a</h2>
           <div class="well">
-  def is_new_container?<br>
-    &nbsp# How to determine if there's a new container?<br><br>
-    
-    &nbsp# It is a new container if this is the first measurement taken<br>
-    &nbspreturn true if Measurement.all.count == 0<br><br>
+            def is_new_container?<br>
+              &nbsp# How to determine if there's a new container?<br><br>
+              
+              &nbsp# It is a new container if this is the first measurement taken<br>
+              &nbspreturn true if Measurement.all.count == 0<br><br>
 
-    &nbsp# Get the last measurement above the minimum threshold<br>
-    &nbspmin_threshold = 10.0 # grams<br>
-    &nbsplast_record = Measurement.where("mass_value > ?",min_threshold).order(read_time: :desc).limit(1)<br><br>
+              &nbsp# Get the last measurement above the minimum threshold<br>
+              &nbspmin_threshold = 10.0 # grams<br>
+              &nbsplast_record = Measurement.where("mass_value > ?",min_threshold).order(read_time: :desc).limit(1)<br><br>
 
-    &nbspif last_record.empty?<br>
-      &nbsp&nbspreturn true<br>
-    &nbspelse<br>
-    &nbsp# Adjust for the current reading being noisily above the last reading<br>
-     &nbspnoise_tolerance = 5.0 # grams<br>
-     &nbspMeasurement.calculate_grams_from_raw(self.raw) > last_record[0].mass_value + noise_tolerance<br>
-    &nbspend<br>
-  end<br>
+              &nbspif last_record.empty?<br>
+                &nbsp&nbspreturn true<br>
+              &nbspelse<br>
+              &nbsp# Adjust for the current reading being noisily above the last reading<br>
+               &nbspnoise_tolerance = 5.0 # grams<br>
+               &nbspMeasurement.calculate_grams_from_raw(self.raw) > last_record[0].mass_value + noise_tolerance<br>
+              &nbspend<br>
+            end<br>
           </div>
       </div>
     </div>
+  </div>
+  <div class="row">
+    <a class="fancybox" rel="group" href="assets/cow.png"><img src="assets/cow.png" alt="" /></a>
   </div>
 </div>
