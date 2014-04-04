@@ -3,7 +3,7 @@ function milkBottle(percent){
   // resetBottle();
   // gon.current_measurement
 
-  var offset = (percent*310)+20
+  var offset = (percent*310)+30
 
   $('#milk-fill').animate({
     top: "-="+offset
