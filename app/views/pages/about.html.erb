@@ -49,16 +49,8 @@
             </div>
             <div class="col-sm-8">
               <p>However, to get the hardware working correctly, we needed to add an amplifier to properly scale the analog signal to a range that the Arduino could measure precisely. Without the amplifier, placing anything from 0-6 kg on the mass sensor would result in the same raw value being measured by the Arduino. In addition to the amplifier, we added an Adafruit CC3000 WiFi Shield so the Arduino can communication with our server over WiFi.</p>
-              <h2>Programming the Arduino in C</h2>
-              <div class="well">
-                void loop(void)<br>
-                  &nbsp&nbsp{<br>
-                  &nbsp&nbsp&nbsp&nbspunsigned long time = millis();<br>
-                  &nbsp&nbsp&nbsp&nbspif (time - lastSend >= (1000 * (unsigned long)LOGGING_FREQ_SECONDS)) {<br>
-                  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsplogSensorReading();<br>
-                  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsplastSend = time;<br>
-                  &nbsp&nbsp}<br>
-                  }</div>
+              <h2>Programming the Arduino</h2>
+              <p>The arduino sketch itself was pretty basic, based on the tutorial provided by <a href="http://learn.adafruit.com/low-power-wifi-datalogging">Tony DiCola</a>. When turned on, the Arduino connects to wifi and sends off its first reading. It then sleeps for some period (30 minutes for now), until it has to send another reading. For the proof of concept we ran the Arduino sketch without any optimizations for power consumption. When deployed, we will have to update the sketch to sleep in between readings.</p>
             </div>
           </div>
         </div>
