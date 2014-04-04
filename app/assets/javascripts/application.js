@@ -19,3 +19,5 @@
 //= require charts
 //= require dashboards
 //= require milkbottle
+//= require fancybox/jquery.fancybox.pack
+//= require about
