@@ -7,10 +7,11 @@ function milkBottle(percent){
 
   $('#milk-fill').animate({
     top: "-="+offset
-  },700,function(){});
+  },1000,loop);
 }
 
 $(".measurements.index").ready(function(){
+
   milkBottle(gon.current_measurement/2000);
 });
 
@@ -19,5 +20,11 @@ function resetBottle(){
   $('#milk-fill').css('top',0); 
 }
 
-//767 breakpoint ?
 
+function loop() {
+    $("#milk-fill").animate({"top": "+=10px"},1000,function(){
+        $("#milk-fill").animate({"top": "-=10px"},1000,function(){
+            loop();
+        });
+    });
+}
