@@ -70,9 +70,11 @@
         </div>
         <div class="col-xs-4">
           <img src="assets/second_iteration_pic.jpg" class="img-responsive img-rounded"alt="A little cleaner!">
+          <p></p>
         </div>
         <div class="col-xs-4">
           <img src="assets/third_iteration_pic.jpg" class="img-responsive img-rounded"alt="A little cleaner!">
+          <p></p>
         </div>
       </div>
     </div>
@@ -86,7 +88,7 @@
           <p>On the software side, MilkTrackr is built on Ruby on Rails with Bootstrap on the front-end and a PostgreSQL database for the back-end. We use several models, all built in Ruby, to capture new measurements, convert reading to grams and liters, and detect if a new milk container has been purchased. Once the data is securely stored in the MilkTrackr database, we use <a href="http://www.highcharts.com/">Highcharts Javascript libraries</a> to put together the interactive dashboards that our users know and love!</p>
       </div>
       <div class="col-sm-6">
-        <img src="assets/cowcarton.png" class="cow img-responsive" alt="Cow">
+        <img src="assets/code_pic.jpg" class="img-responsive img-rounded" alt="Code">
       </div>
     </div>
     <div class="row">
@@ -100,21 +102,22 @@
         <h4>Code Snippet</h4>
         <div class="well">
   def is_new_container?   # How to determine if there's a new container?<br>
-    &nbsp&nbsp# It is a new container if this is the first measurement taken<br>
-    &nbsp&nbspreturn true if Measurement.all.count == 0<br><br>
+    &nbsp&nbsp&nbsp&nbsp# It is a new container if this is the first measurement taken<br>
+    &nbsp&nbsp&nbsp&nbspreturn true if Measurement.all.count == 0<br><br>
 
-    &nbsp&nbsp# Get the last measurement above the minimum threshold<br>
-    &nbsp&nbspmin_threshold = 10.0 # grams<br>
-    &nbsp&nbsplast_record = Measurement.where("mass_value > ?",min_threshold).order(read_time: :desc).limit(1)<br><br>
+    &nbsp&nbsp&nbsp&nbsp# Get the last measurement above the minimum threshold<br>
+    &nbsp&nbsp&nbsp&nbspmin_threshold = 10.0 # grams<br>
+    &nbsp&nbsp&nbsp&nbsplast_record = Measurement.where("mass_value > ?",min_threshold).order(read_time: :desc).limit(1)<br><br>
 
-    &nbsp&nbspif last_record.empty?<br>
-      &nbsp&nbsp&nbsp&nbspreturn true<br>
-    &nbsp&nbspelse<br>
-    &nbsp&nbsp&nbsp&nbsp# Adjust for the current reading being noisily above the last reading<br>
-     &nbsp&nbsp&nbsp&nbspnoise_tolerance = 5.0 # grams<br>
-     &nbsp&nbsp&nbsp&nbspMeasurement.calculate_grams_from_raw(self.raw) > last_record[0].mass_value + noise_tolerance<br>
-    &nbsp&nbspend<br>
+    &nbsp&nbsp&nbsp&nbspif last_record.empty?<br>
+      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspreturn true<br>
+    &nbsp&nbsp&nbsp&nbspelse<br>
+    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp# Adjust for the current reading being noisily above the last reading<br>
+     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspnoise_tolerance = 5.0 # grams<br>
+     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMeasurement.calculate_grams_from_raw(self.raw) > last_record[0].mass_value + noise_tolerance<br>
+    &nbsp&nbsp&nbsp&nbspend<br>
   end<br>
+        <p></p>
         </div>
       </div>
     </div>
