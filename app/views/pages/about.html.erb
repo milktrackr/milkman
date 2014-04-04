@@ -71,4 +71,37 @@
       </div>
     </div>
   </div>
+  
+  <div class="row">
+    <h1>The Software</h1>
+    <div class="row">
+      <div class="col-sm-6">
+        <h2>An Overview</h2>
+          <p>On the software side, MilkTrackr is built on Ruby on Rails with Bootstrap on the front-end and a PostgreSQL database for the back-end. We use several models, all built in Ruby, to capture new measurements, convert reading to grams and liters, and detect if a new milk container has been purchased. Once the data is securely stored in the MilkTrackr database, we use <a href="http://www.highcharts.com/">Highcharts Javascript libraries</a> to put together the interactive dashboards that our users know and love!</p>
+      </div>
+      <div class="col-sm-6">
+        <h2>Code to detec a</h2>
+          <div class="well">
+  def is_new_container?<br>
+    &nbsp# How to determine if there's a new container?<br><br>
+    
+    &nbsp# It is a new container if this is the first measurement taken<br>
+    &nbspreturn true if Measurement.all.count == 0<br><br>
+
+    &nbsp# Get the last measurement above the minimum threshold<br>
+    &nbspmin_threshold = 10.0 # grams<br>
+    &nbsplast_record = Measurement.where("mass_value > ?",min_threshold).order(read_time: :desc).limit(1)<br><br>
+
+    &nbspif last_record.empty?<br>
+      &nbsp&nbspreturn true<br>
+    &nbspelse<br>
+    &nbsp# Adjust for the current reading being noisily above the last reading<br>
+     &nbspnoise_tolerance = 5.0 # grams<br>
+     &nbspMeasurement.calculate_grams_from_raw(self.raw) > last_record[0].mass_value + noise_tolerance<br>
+    &nbspend<br>
+  end<br>
+          </div>
+      </div>
+    </div>
+  </div>
 </div>
