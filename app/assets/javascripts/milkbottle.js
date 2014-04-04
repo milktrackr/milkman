@@ -10,7 +10,7 @@ function milkBottle(percent){
   },700,function(){});
 }
 
-$(document).ready(function(){
+$(".measurements.index").ready(function(){
   milkBottle(gon.current_measurement/2000);
 });
 
@@ -20,3 +20,4 @@ function resetBottle(){
 }
 
 //767 breakpoint ?
+
