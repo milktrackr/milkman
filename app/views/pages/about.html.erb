@@ -64,14 +64,20 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-xs-12">
-          <h2>Final Version</h2>
-          <p>Once we had the proof of concept up and running, we secured the Arduino and breadboard in a cardboard case and ran wire through the lid where we mounted the mass sensor platform. The result is a secure prototype that can comfortably fit in any refrigerator for all your milk tracking needs!</p>
+        <div class="col-xs-4">
+          <h2>Working Prototype</h2>
+          <p>Once we had the proof of concept up and running, we secured the Arduino and breadboard in a cardboard case and ran wire through the lid where we mounted the mass sensor platform. We ran the electrical cord through the side of the container and sealed the lid with plenty of electrical tape.The result is a secure prototype that can comfortably fit in any refrigerator for all your milk tracking needs!</p>
+        </div>
+        <div class="col-xs-4">
+          <img src="assets/second_iteration_pic.jpg" class="img-responsive img-rounded"alt="A little cleaner!">
+        </div>
+        <div class="col-xs-4">
+          <img src="assets/third_iteration_pic.jpg" class="img-responsive img-rounded"alt="A little cleaner!">
         </div>
       </div>
     </div>
   </div>
-  
+
   <div class="row">
     <h1>The Software</h1>
     <div class="row">
@@ -80,27 +86,36 @@
           <p>On the software side, MilkTrackr is built on Ruby on Rails with Bootstrap on the front-end and a PostgreSQL database for the back-end. We use several models, all built in Ruby, to capture new measurements, convert reading to grams and liters, and detect if a new milk container has been purchased. Once the data is securely stored in the MilkTrackr database, we use <a href="http://www.highcharts.com/">Highcharts Javascript libraries</a> to put together the interactive dashboards that our users know and love!</p>
       </div>
       <div class="col-sm-6">
-        <h2>Code to detec a</h2>
-          <div class="well">
-  def is_new_container?<br>
-    &nbsp# How to determine if there's a new container?<br><br>
-    
-    &nbsp# It is a new container if this is the first measurement taken<br>
-    &nbspreturn true if Measurement.all.count == 0<br><br>
+        <img src="assets/cowcarton.png" class="cow img-responsive" alt="Cow">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 white">
+        <h3>New Container Detection</h3>
+        <p>New container detection proved to be an interesting coding problem to tackle. We wanted our application to instantly recognize if a new milk carton had been purchased to replace the old. In theory, anytime a new measurement </p>
+        <img src="assets/newcontainer.png" class="img-responsive img-rounded"alt="A little cleaner!">
+        <p></p>
+      </div>
+      <div class="col-sm-6 white">
+        <h4>Code Snippet</h4>
+        <div class="well">
+  def is_new_container?   # How to determine if there's a new container?<br>
+    &nbsp&nbsp# It is a new container if this is the first measurement taken<br>
+    &nbsp&nbspreturn true if Measurement.all.count == 0<br><br>
 
-    &nbsp# Get the last measurement above the minimum threshold<br>
-    &nbspmin_threshold = 10.0 # grams<br>
-    &nbsplast_record = Measurement.where("mass_value > ?",min_threshold).order(read_time: :desc).limit(1)<br><br>
+    &nbsp&nbsp# Get the last measurement above the minimum threshold<br>
+    &nbsp&nbspmin_threshold = 10.0 # grams<br>
+    &nbsp&nbsplast_record = Measurement.where("mass_value > ?",min_threshold).order(read_time: :desc).limit(1)<br><br>
 
-    &nbspif last_record.empty?<br>
-      &nbsp&nbspreturn true<br>
-    &nbspelse<br>
-    &nbsp# Adjust for the current reading being noisily above the last reading<br>
-     &nbspnoise_tolerance = 5.0 # grams<br>
-     &nbspMeasurement.calculate_grams_from_raw(self.raw) > last_record[0].mass_value + noise_tolerance<br>
-    &nbspend<br>
+    &nbsp&nbspif last_record.empty?<br>
+      &nbsp&nbsp&nbsp&nbspreturn true<br>
+    &nbsp&nbspelse<br>
+    &nbsp&nbsp&nbsp&nbsp# Adjust for the current reading being noisily above the last reading<br>
+     &nbsp&nbsp&nbsp&nbspnoise_tolerance = 5.0 # grams<br>
+     &nbsp&nbsp&nbsp&nbspMeasurement.calculate_grams_from_raw(self.raw) > last_record[0].mass_value + noise_tolerance<br>
+    &nbsp&nbspend<br>
   end<br>
-          </div>
+        </div>
       </div>
     </div>
   </div>
