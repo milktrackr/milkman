@@ -15,15 +15,16 @@ describe MeasurementsController do
 
   it "#index" do
     get :index
-    expect(response.body).to include(
+    # expect(response.body).to include(
   end
 
   it "#new" do
   end
   
-  it "#create" do
+  it "should #create a new measurement" do
+    post :create, measurement: { raw: 1000, read_time: Time.now, mass_value: 8.01, mass_uom: "g", container_id: 1 }
+    expect(Measurement.count).to eq(5)
   end
-
 
   it "#update" do
   end
