@@ -42,6 +42,12 @@ describe MeasurementsController do
   end
 
   it "#destroy" do
+    m = Measurement.last
+    delete :destroy, :id => m.id 
+    # expect { }.should_not change(User, :count)
+    # delete :delete
+
+    expect{Measurement.find(m.id)}.to raise_error(ActiveRecord::RecordNotFound)
   end
 
   it "#send_text" do
