@@ -39,6 +39,7 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 group :test, :development do
+  gem 'simplecov'
   gem "rspec-rails"
   gem "capybara"
   gem "selenium-webdriver"
