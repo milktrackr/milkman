@@ -49,6 +49,7 @@ class MeasurementsController < ApplicationController
   # PATCH/PUT /measurements/1.json
   def update
     respond_to do |format|
+      
       if @measurement.update(measurement_params)
         format.html { redirect_to @measurement, notice: 'Measurement was successfully updated.' }
         format.json { head :no_content }
