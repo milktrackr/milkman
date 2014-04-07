@@ -14,11 +14,14 @@ describe MeasurementsController do
   end
 
   it "#index" do
+    Measurement.create(:raw => 200)
     get :index
-    # expect(response.body).to include(
+    expect(assigns(:current_measurement)).to eq(Measurement.calculate_grams_from_raw(200))
   end
 
   it "#new" do
+    get :new
+    response.should render_template("new")
   end
   
   it "should #create a new measurement" do
@@ -26,7 +29,16 @@ describe MeasurementsController do
     expect(Measurement.count).to eq(5)
   end
 
-  it "#update" do
+  describe "#update" do
+  	describe "with valid params" do
+  		it "updates the associated record" do
+		  	measurement = Measurement.first
+		  	new_time = Time.parse("Mon, 07 Apr 2014 11:30:26 EDT -04:00")
+		  	patch :update, :id => measurement.id, :measurement => attributes_for(:measurement, :read_time => new_time)
+		  	measurement.reload
+		  	expect(measurement.read_time).to eq(new_time)
+		end
+  	end
   end
 
   it "#destroy" do
