@@ -6,13 +6,13 @@ class MeasurementsController < ApplicationController
   # GET /measurements.json
   def index
     @measurements = Measurement.all
+    #this is the only 
     gon.current_measurement = @measurements.last.mass_value
     gon.first_measurement_time = @measurements.first.read_time.utc.to_i*1000
     gon.all_measurements = []
     @measurements.all.each do |measurement|
     gon.all_measurements << [measurement.read_time.utc.to_i*1000, measurement.mass_value]
     end
-
   end
 
   # GET /measurements/1

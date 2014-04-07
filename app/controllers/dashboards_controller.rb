@@ -1,8 +1,6 @@
 class DashboardsController < ApplicationController
 
 	def index
-		
-			binding.pry
 		@measurements = Measurement.all
 		@containers = Container.all
 		gon.current_measurement = @measurements.last.mass_value
