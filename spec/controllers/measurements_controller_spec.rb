@@ -14,8 +14,7 @@ describe MeasurementsController do
   end
 
   it "#index" do
-    get :index
-    expect(response.body).to include(
+    pending
   end
 
   it "#new" do
@@ -25,7 +24,16 @@ describe MeasurementsController do
   end
 
 
-  it "#update" do
+  describe "#update" do
+  	describe "with valid params" do
+  		it "updates the associated record" do
+		  	measurement = Measurement.first
+		  	new_time = Time.parse("Mon, 07 Apr 2014 11:30:26 EDT -04:00")
+		  	patch :update, :id => measurement.id, :measurement => attributes_for(:measurement, :read_time => new_time)
+		  	measurement.reload
+		  	expect(measurement.read_time).to eq(new_time)
+		end
+  	end
   end
 
   it "#destroy" do
