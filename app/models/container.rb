@@ -7,7 +7,7 @@ class Container < ActiveRecord::Base
   self.last_text_message = Time.now - 1.day
 
   def percentage_left
-    ((self.measurements.last.mass_value / self.original_mass) * 100.0).round
+    self.measurements.last.mass_value / self.original_mass
   end
 
   def self.total_milk_consumed

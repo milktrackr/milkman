@@ -99,7 +99,7 @@
                   <% Container.order(creation_time: :desc).limit(10).each do |container|%>
                   <a href="#" class="list-group-item">
                     <span class="badge"><%= time_ago_in_words(container.creation_time) %> ago</span>
-                    <i class="fa fa-comment"></i> New container added: <%= container.original_mass %><%= container.mass_uom %>
+                    <i class="fa fa-comment"></i> New container added: <%= container.original_mass %> ml
                   </a>
                   <% end %>
                 </div>
@@ -128,7 +128,7 @@
                         <td><%= measurement.id %></td>
                         <td><%= measurement.read_time.strftime("%m/%d/%Y") %></td>
                         <td><%= measurement.read_time.strftime("%I:%M %p") %></td>
-                        <td><%= measurement.mass_value %><%= measurement.mass_uom %></td>
+                        <td><%= measurement.mass_value %> ml</td>
                       </tr>
                       <% end %>
                       

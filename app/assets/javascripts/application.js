@@ -12,10 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-readyselector
 //= require bootstrap
 //= require highcharts
 //= require highcharts-more
-//= require jquery-readyselector
 //= require charts
 //= require dashboards
 //= require milkbottle

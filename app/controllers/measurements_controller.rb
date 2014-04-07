@@ -5,10 +5,10 @@ class MeasurementsController < ApplicationController
   # GET /measurements
   # GET /measurements.json
   def index
-    @measurements = Measurement.all
-    #this is the only variable that gets displayed
-    @current_measurement = @measurements.last.mass_value
-    gon.current_measurement = @current_measurement
+    current_container = Container.last
+    gon.current_measurement = current_container.measurements.last.mass_value
+    gon.current_container_size = current_container.original_mass
+    gon.percentage_left = current_container.percentage_left
   end
 
   # GET /measurements/1

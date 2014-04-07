@@ -131,7 +131,7 @@ $('#hour-button').click(function() {
         // the value axis
         yAxis: {
             min: 0,
-            max: 2000,
+            max: gon.current_container_size,
             
             minorTickInterval: 'auto',
             minorTickWidth: 1,
@@ -153,19 +153,18 @@ $('#hour-button').click(function() {
             },
             plotBands: [{
                 from: 0,
-                to: 400,
+                to: Math.round(gon.current_container_size/3),
                 color: '#DF5353' // red
             }, {
-                from: 400,
-                to: 1200,
+                from: Math.round(gon.current_container_size/3),
+                to: Math.round(2*(gon.current_container_size/3)),
                 color: '#DDDF0D' // yellow
             }, {
-                from: 1200,
-                to: 2000,
+                from: Math.round(2*(gon.current_container_size/3)),
+                to: gon.current_container_size,
                 color: '#55BF3B' // green
             }]        
         },
-    
         series: [{
             name: 'Milk Amount',
             data: [gon.current_measurement],

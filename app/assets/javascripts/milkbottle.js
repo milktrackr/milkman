@@ -12,7 +12,7 @@ function milkBottle(percent){
 
 $(".measurements.index").ready(function(){
 
-  milkBottle(gon.current_measurement/2000);
+  milkBottle(gon.percentage_left);
 });
 
 //Mostly for testing
