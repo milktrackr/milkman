@@ -14,8 +14,10 @@ describe MeasurementsController do
   end
 
   it "#index" do
+    Measurement.create(:raw => 200)
+
     get :index
-    expect(response.body).to include(
+    expect(assigns(:current_measurement)).to eq(Measurement.calculate_grams_from_raw(200))
   end
 
   it "#new" do
