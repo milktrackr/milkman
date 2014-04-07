@@ -21,6 +21,8 @@ describe MeasurementsController do
   end
 
   it "#new" do
+    get :new
+    response.should render_template("new")
   end
   
   it "#create" do

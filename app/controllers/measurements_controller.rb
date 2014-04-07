@@ -7,7 +7,6 @@ class MeasurementsController < ApplicationController
   def index
     @measurements = Measurement.all
     #this is the only variable that gets displayed
-    binding.pry
     @current_measurement = @measurements.last.mass_value
     gon.current_measurement = @current_measurement
   end
