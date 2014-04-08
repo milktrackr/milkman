@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   get 'dashboard' => 'dashboards#index'
   get 'about' => 'pages#about'
 
+  get 'realtime' => 'dashboards#realtime', as: :realtime
+  get 'update' => 'dashboards#update', as: :update
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

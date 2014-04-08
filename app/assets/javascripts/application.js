@@ -18,6 +18,7 @@
 //= require highcharts-more
 //= require charts
 //= require dashboards
+//= require realtime
 //= require milkbottle
 //= require fancybox/jquery.fancybox.pack
 //= require about
