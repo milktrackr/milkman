@@ -1,0 +1,144 @@
+
+      <div id="page-wrapper" data-id='<%= @measurements.last.id%>'>
+
+        <div class="row">
+          <div class="col-lg-12">
+            <h1>Real-time Dashboard <small>Statistical Overview</small></h1>
+          </div>
+        </div><!-- /.row -->
+
+        <div class="row">
+          <div class="col-sm-3">
+            <div class="panel panel-info">
+              <div class="panel-heading">
+                <div class="row">
+                  <div class="col-xs-12 text-right">
+                    <p class="announcement-heading" id="measurements_count"><%= @measurements.count %></p>
+                    <p class="announcement-text">Readings</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="panel panel-warning">
+              <div class="panel-heading">
+                <div class="row">
+                  <div class="col-xs-12 text-right">
+                    <p class="announcement-heading" id="containers_count"><%= @containers.count %></p>
+                    <p class="announcement-text">Containers</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="panel panel-danger">
+              <div class="panel-heading">
+                <div class="row">
+                  <div class="col-xs-12 text-right">
+                    <p class="announcement-heading" id="containers_total_milk"><%= @containers.total_milk_consumed %></p>
+                    <p class="announcement-text">Liters consumed</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="panel panel-success">
+              <div class="panel-heading">
+                <div class="row">
+                  <div class="col-xs-12 text-right">
+                    <p class="announcement-heading green-heading" id="time_ago"><%= time_ago_in_words(@containers.last.creation_time) %></p>
+                    <p class="announcement-text green-text">Since new container</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div><!-- /.row -->
+
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> Real-time Milk Statistics</h3>
+              </div>
+
+              <div class="panel-body">
+                <div id="milk-line"></div>
+<!--                 <div id="chart-buttons">
+                  <button id="max-button">Max</button>
+                  <button id="week-button">1 Week</button>
+                  <button id="day-button">1 Day</button>
+                  <button id="hour-button">1 Hour</button>
+                </div> -->
+              </div>
+            </div>
+          </div>
+        </div><!-- /.row -->
+
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Current Milk Status</h3>
+              </div>
+              <div class="panel-body">
+                <div id="milk-gauge"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h3 class="panel-title"><i class="fa fa-clock-o"></i> Recent Activity</h3>
+              </div>
+              <div class="panel-body">
+                <div class="list-group">
+                  <% Container.order(creation_time: :desc).limit(10).each do |container|%>
+                  <a href="#" class="list-group-item">
+                    <span class="badge"><%= time_ago_in_words(container.creation_time) %> ago</span>
+                    <i class="fa fa-comment"></i> New container added: <%= container.original_mass %> ml
+                  </a>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="panel panel-primary" id="measurements" data-last="<%= @measurements.order(read_time: :desc).limit(1)[0].read_time.to_i%>">
+              <div class="panel-heading">
+                <h3 class="panel-title"><i class="fa fa-money"></i> Recent Readings</h3>
+              </div>
+              <div class="panel-body">
+                <div class="table-responsive">
+                  <table class="table table-bordered table-hover table-striped tablesorter">
+                    <thead>
+                      <tr>
+                        <th>Reading # <i class="fa fa-sort"></i></th>
+                        <th>Reading Date <i class="fa fa-sort"></i></th>
+                        <th>Reading Time <i class="fa fa-sort"></i></th>
+                        <th>Quantity <i class="fa fa-sort"></i></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% @measurements.order(read_time: :desc).limit(10).each do |measurement| %>
+                      <tr>
+                        <td><%= measurement.id %></td>
+                        <td><%= measurement.read_time.strftime("%m/%d/%Y") %></td>
+                        <td><%= measurement.read_time.strftime("%I:%M %p") %></td>
+                        <td><%= measurement.mass_value %> ml</td>
+                      </tr>
+                      <% end %>
+                      
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div><!-- /.row -->
+
+      </div><!-- /#page-wrapper -->
+
