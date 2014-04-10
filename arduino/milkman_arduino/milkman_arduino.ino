@@ -111,7 +111,7 @@ void setup(void)
 void loop(void)
 {
   unsigned long time = millis();
-  if (time - lastSend >= (2000 * (unsigned long)LOGGING_FREQ_SECONDS)) {
+  if (time - lastSend >= (4000 * (unsigned long)LOGGING_FREQ_SECONDS)) {
     logSensorReading();
     lastSend = time;
   }
