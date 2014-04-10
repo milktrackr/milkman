@@ -6,7 +6,7 @@ $looping = true
 
 class MilkServer
   include HTTParty
-  base_uri 'http://milk-man.herokuapp.com/'
+  base_uri 'http://localhost:3000/'
 end
 
 def listen

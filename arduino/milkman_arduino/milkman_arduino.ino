@@ -36,14 +36,14 @@
 #define WLAN_SECURITY          WLAN_SEC_WPA2
 
 // Data logging configuration.
-#define LOGGING_FREQ_SECONDS   60       // Seconds to wait before a new sensor reading is logged.
+#define LOGGING_FREQ_SECONDS   1       // Seconds to wait before a new sensor reading is logged.
 
 #define SENSOR_PIN             0        // Analog pin to read sensor values from (for example
                                         // from a photocell or other resistive sensor).
 
 //#define SERVER_IP              192, 168, 3, 71    // Logging server IP address.  Note that this
                                                    // should be separated with commas and NOT periods!
-#define SERVER_IP              107, 170, 98, 234  // DO droplet
+#define SERVER_IP              192, 168, 3, 71  // DO droplet
 
 #define SERVER_PORT            8000                // Logging server listening port.
 
@@ -111,7 +111,7 @@ void setup(void)
 void loop(void)
 {
   unsigned long time = millis();
-  if (time - lastSend >= (1000 * (unsigned long)LOGGING_FREQ_SECONDS)) {
+  if (time - lastSend >= (2000 * (unsigned long)LOGGING_FREQ_SECONDS)) {
     logSensorReading();
     lastSend = time;
   }
