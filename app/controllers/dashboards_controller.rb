@@ -19,10 +19,12 @@ class DashboardsController < ApplicationController
 
   def update
     data_hash = {}
-    # @new_measurements = Measurement.where("read_time > ?",Time.at(params[:after].to_i + 1))
-    @new_measurements = Measurement.last
+    # id = params.has_key?(:after) ? Measurement.last.id : params[:after].to_i + 1
+    id = Measurement.last.id
+    @new_measurements = Measurement.find(id)
     @containers = Container.all
     data_hash[:mass_value] = @new_measurements[:mass_value]
+    data_hash[:id] = @new_measurements[:id]
     data_hash[:read_time] = @new_measurements[:read_time]
     data_hash[:measurements_count] = Measurement.all.count
     data_hash[:containers_count] = @containers.count
