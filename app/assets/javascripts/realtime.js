@@ -69,9 +69,11 @@ $(".dashboards.realtime").ready(function(){
                 title: {
                     text: 'Milk (ml)'
                 },
-                plotLines: [{
-                    width: 100
-                }]
+                min: 0,
+                max: 2000,
+                // plotLines: [{
+                //     width: 100
+                // }]
             },
             tooltip: {
                 formatter: function() {
