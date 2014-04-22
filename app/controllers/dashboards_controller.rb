@@ -28,6 +28,7 @@ class DashboardsController < ApplicationController
       puts "||||||||" + id.to_s
       @new_measurements = Measurement.find(id)
       data_hash[:mass_value] = @new_measurements[:mass_value]
+      gon.last_measurement = data_hash[:mass_value]
       data_hash[:id] = @new_measurements[:id]
       data_hash[:read_time] = @new_measurements[:read_time]
       data_hash[:measurements_count] = @new_measurements[:id]
