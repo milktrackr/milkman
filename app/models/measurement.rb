@@ -25,9 +25,13 @@ class Measurement < ActiveRecord::Base
 
   def self.log_new_measurement(params)
     m = Measurement.new(params)
-    if ((m.raw-Measurement.last.raw).abs <20)
+    
+    if m.raw < 185
+      m.raw = Measurement.last.raw
+    elsif ((m.raw-Measurement.last.raw).abs <20)
       m.raw = Measurement.last.raw
     end
+
     if m.is_new_container?
       Container.create( original_mass:  Measurement.calculate_grams_from_raw(params[:raw]),
                         mass_uom:       'g',
