@@ -24,8 +24,10 @@ class Measurement < ActiveRecord::Base
   end
 
   def self.log_new_measurement(params)
-    # Assume that we don't want to do any "smoothing" -> 154g->155g, just write 155g
     m = Measurement.new(params)
+    if ((m.raw-Measurement.last.raw).abs <20)
+      m.raw = Measurement.last.raw
+    end
     if m.is_new_container?
       Container.create( original_mass:  Measurement.calculate_grams_from_raw(params[:raw]),
                         mass_uom:       'g',
